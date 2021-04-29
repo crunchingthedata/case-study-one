@@ -11,7 +11,17 @@ def data():
         })
     return data
 
-
 def test_upsample_minority_class(data):
     data_ = sample.upsample_minority_class(data, 'y', 0.5)
     assert isinstance(data_, pd.DataFrame)
+
+def test_upsample_minority_class_high_p(data):
+    with pytest.raises(ValueError) as e:
+        sample.upsample_minority_class(data, 'y', 1.5)
+    assert "Proportion out of bounds" in str(e.value)
+
+def test_upsample_minority_class_binary(data):
+    with pytest.raises(ValueError) as e:
+        data_ = data.loc[data['y'] == 1]
+        sample.upsample_minority_class(data_, 'y', 0.5)
+    assert "Binary outcome expected" in str(e.value)
