@@ -18,11 +18,13 @@ def test_upsample_minority_class(data, p):
 
     assert p_minority == pytest.approx(p, rel=0.05)
 
+@pytest.mark.errors
 def test_upsample_minority_class_high_p(data):
     with pytest.raises(ValueError) as e:
         sample.upsample_minority_class(data, 'y', 1.5)
     assert "Proportion out of bounds" in str(e.value)
 
+@pytest.mark.errors
 def test_upsample_minority_class_binary(data):
     with pytest.raises(ValueError) as e:
         data_ = data.loc[data['y'] == 1]
