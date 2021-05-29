@@ -6,3 +6,4 @@ dependencies:
   - ipykernel
   - pip
     - matplotlib
+    - pytest
