@@ -9,10 +9,7 @@ import sklearn.preprocessing as preprocessing
 from bank_deposit_classifier.sample import upsample_minority_class
 
 
-INTERMEDIATE_DATA_DIR = os.path.join(
-    Path(__file__).parents[2],
-    'data/intermediate'
-    )
+DATA_DIR = os.path.join(Path(__file__).parents[2], 'data')
 
 class DataPrep:
     def __init__(self, outcome, features=None, categorical_features=None, one_hot_encoder=None):
@@ -21,11 +18,12 @@ class DataPrep:
         self._categorical_features = categorical_features
         self._one_hot_encoder = one_hot_encoder
 
-    def get_data(self, data_path):
-        data = pd.read_csv(data_path, sep=';')
+    def get_data(self, path):
+        path = os.path.join(DATA_DIR, path)
+        data = pd.read_csv(path, sep=';')
         if self._features:
             data = data[self._features]
-        print(f'Data read from {data_path}')
+        print(f'Data read from {path}')
         return data
 
     def encode_data(self, data):
@@ -53,7 +51,7 @@ class DataPrep:
         train, test = train_test_split(data, random_state=123, train_size=0.8)
         return train, test
 
-    def save_data(self, data, file_name = 'data.csv'):
-        path = os.path.join(INTERMEDIATE_DATA_DIR, file_name)
+    def save_data(self, data, path):
+        path = os.path.join(DATA_DIR, path)
         data.to_csv(path, index=False)
         print(f'Data written to {path}')
