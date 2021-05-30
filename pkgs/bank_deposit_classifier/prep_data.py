@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+import yaml
 
 import pandas as pd
 import numpy as np
@@ -8,8 +9,9 @@ import sklearn.preprocessing as preprocessing
 
 from bank_deposit_classifier.sample import upsample_minority_class
 
-
-DATA_DIR = os.path.join(Path(__file__).parents[2], 'data')
+BASE_DIR = Path(__file__).parents[2]
+DATA_DIR = os.path.join(BASE_DIR, 'data')
+CONFIG_DIR = os.path.join(BASE_DIR, 'config')
 
 class DataPrep:
     def __init__(self, outcome, features=None, categorical_features=None, one_hot_encoder=None):
@@ -55,3 +57,10 @@ class DataPrep:
         path = os.path.join(DATA_DIR, path)
         data.to_csv(path, index=False)
         print(f'Data written to {path}')
+
+    @classmethod
+    def from_yaml(cls, path):
+        path = os.path.join(CONFIG_DIR, path)
+        with open(path, 'r') as file:
+            params = yaml.load(file, Loader=yaml.FullLoader)
+        return cls(**params)
