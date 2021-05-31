@@ -47,10 +47,7 @@ class DataPrep:
         categorical = pd.DataFrame(categorical, columns=categorical_columns)
         continuous = data.select_dtypes(include=np.number)
         data = pd.concat([categorical, continuous], axis=1)
-        data.columns = [
-            self.standardize_names(x)
-            for x in data.columns
-            ]
+        data = self.fix_column_names(data)
         return data, one_hot_encoder
 
     def split_data(self, data):
@@ -62,6 +59,15 @@ class DataPrep:
         path = os.path.join(DATA_DIR, path)
         data.to_csv(path, index=False)
         print(f'Data written to {path}')
+
+    def fix_column_names(self, data):
+        data.columns = [self.standardize_names(x) for x in data.columns]
+        pattern = self._outcome + '_'
+        matches = [x for x in data.columns if re.match(pattern, x)]
+        if len(matches) != 1:
+            raise Exception('Cannot uniquely identify outcome column!')
+        data = data.rename(columns={matches[0]: self._outcome})
+        return data
 
     @staticmethod
     def standardize_names(name):

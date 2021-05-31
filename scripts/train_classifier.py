@@ -1,7 +1,6 @@
 from bank_deposit_classifier.prep_data import *
 
 
-# TODO: preserve base outcome name after one hot encoding
 input_path = 'input/bank-additional-full.csv'
 train_path = 'intermediate/train.csv'
 test_path = 'intermediate/test.csv'
