@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+import re
 import yaml
 
 import pandas as pd
@@ -46,6 +47,10 @@ class DataPrep:
         categorical = pd.DataFrame(categorical, columns=categorical_columns)
         continuous = data.select_dtypes(include=np.number)
         data = pd.concat([categorical, continuous], axis=1)
+        data.columns = [
+            self.standardize_names(x)
+            for x in data.columns
+            ]
         return data, one_hot_encoder
 
     def split_data(self, data):
@@ -57,6 +62,10 @@ class DataPrep:
         path = os.path.join(DATA_DIR, path)
         data.to_csv(path, index=False)
         print(f'Data written to {path}')
+
+    @staticmethod
+    def standardize_names(name):
+        return re.sub('\W', '_', name).lower()
 
     @classmethod
     def from_yaml(cls, path):
