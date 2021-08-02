@@ -31,7 +31,7 @@ class DataPrep:
 
     def encode_data(self, data):
         if self._categorical_features:
-            categorial = data[self._categorical_features]
+            categorical = data[self._categorical_features]
         else:
             categorical = data.select_dtypes(exclude=np.number)
             categorical_features = categorical.columns
