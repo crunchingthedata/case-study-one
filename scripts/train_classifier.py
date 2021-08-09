@@ -54,3 +54,8 @@ mlflow.log_param('n_estimators', n_estimators)
 mlflow.log_param('max_features', max_features)
 mlflow.log_metric('train_auc', train_auc)
 mlflow.log_metric('test_auc', test_auc)
+
+with tempfile.TemporaryDirectory() as tmp:
+    path = os.path.join(tmp, 'train.csv')
+    train.to_csv(path)
+    mlflow.log_artifacts(tmp)
