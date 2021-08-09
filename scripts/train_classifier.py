@@ -49,3 +49,6 @@ import tempfile
 mlflow.set_tracking_uri('http://localhost:5000')
 mlflow.set_experiment('case-study-one')
 mlflow.start_run()
+
+mlflow.log_param('n_estimators', n_estimators)
+mlflow.log_param('max_features', max_features)
