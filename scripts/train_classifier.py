@@ -59,3 +59,5 @@ with tempfile.TemporaryDirectory() as tmp:
     path = os.path.join(tmp, 'train.csv')
     train.to_csv(path)
     mlflow.log_artifacts(tmp)
+
+mlflow.end_run()
