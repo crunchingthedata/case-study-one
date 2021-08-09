@@ -41,3 +41,11 @@ train_predictions = rf.predict(train_resampled.drop(outcome, axis=1))
 test_predictions = rf.predict(test.drop(outcome, axis=1))
 train_auc = roc_auc_score(train_resampled[outcome], train_predictions)
 test_auc = roc_auc_score(test[outcome], test_predictions)
+
+# log data
+import mlflow
+import tempfile
+
+mlflow.set_tracking_uri('http://localhost:5000')
+mlflow.set_experiment('case-study-one')
+mlflow.start_run()
