@@ -60,4 +60,6 @@ with tempfile.TemporaryDirectory() as tmp:
     train.to_csv(path)
     mlflow.log_artifacts(tmp)
 
+mlflow.sklearn.log_model(rf, 'model')
+
 mlflow.end_run()
