@@ -52,3 +52,5 @@ mlflow.start_run()
 
 mlflow.log_param('n_estimators', n_estimators)
 mlflow.log_param('max_features', max_features)
+mlflow.log_metric('train_auc', train_auc)
+mlflow.log_metric('test_auc', test_auc)
