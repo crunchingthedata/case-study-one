@@ -10,3 +10,4 @@ dependencies:
     - mlflow
     - sklearn
     - pyyaml
+    - flask
