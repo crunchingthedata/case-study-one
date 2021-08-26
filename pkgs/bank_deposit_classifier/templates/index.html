@@ -1,18 +1,21 @@
 {% extends 'base.html' %}
 
 {% block body %}
-  <label for="career">Choose a career:</label>
-  <select name="career" id="career">
-    <option value="job_blue_collar">Blue collar</option>
-    <option value="job_housemaid">Housemaid</option>
-    <option value="job_management">Managment</option>
-    <option value="job_services">Services</option>
-    <option value="job_technician">Technician</option>
-    <option value="job_self_employed">Self Employed</option>
-    <option value="job_entrepreneur">Entrepreneur</option>
-    <option value="job_student">Student</option>
-    <option value="job_retired">Retired</option>
-    <option value="job_unemployed">Unemployed</option>
-    <option value="job_unknown">Unknown</option>
-  </select>
+  <form acton="/" method="POST">
+    <label for="career">Choose a career:</label>
+    <select name="career" id="career">
+      <option value="job_blue_collar">Blue collar</option>
+      <option value="job_housemaid">Housemaid</option>
+      <option value="job_management">Managment</option>
+      <option value="job_services">Services</option>
+      <option value="job_technician">Technician</option>
+      <option value="job_self_employed">Self Employed</option>
+      <option value="job_entrepreneur">Entrepreneur</option>
+      <option value="job_student">Student</option>
+      <option value="job_retired">Retired</option>
+      <option value="job_unemployed">Unemployed</option>
+      <option value="job_unknown">Unknown</option>
+    </select>
+    <input type="submit" value="Predict">
+  </form>
 {% endblock %}
