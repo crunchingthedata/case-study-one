@@ -1,11 +1,6 @@
-<!doctype html>
+{% extends 'base.html' %}
 
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
+{% block body %}
   <label for="career">Choose a career:</label>
   <select name="career" id="career">
     <option value="job_blue_collar">Blue collar</option>
@@ -20,6 +15,4 @@
     <option value="job_unemployed">Unemployed</option>
     <option value="job_unknown">Unknown</option>
   </select>
-
-</body>
-</html>
+{% endblock %}
