@@ -18,61 +18,12 @@ COLUMN_ORDER = [
     'duration', 'campaign', 'pdays', 'previous', 'emp_var_rate',
     'cons_price_idx', 'cons_conf_idx', 'euribor3m', 'nr_employed'
     ]
-COLUMN_DEFAULTS = {
-    'job_blue_collar': [0],
-    'job_entrepreneur': [0],
-    'job_housemaid': [0],
-    'job_management': [0],
-    'job_retired': [0],
-    'job_self_employed': [0],
-    'job_services': [0],
-    'job_student': [0],
-    'job_technician': [0],
-    'job_unemployed': [0],
-    'job_unknown': [0],
-    'marital_married': [0],
-    'marital_single': [0],
-    'marital_unknown': [0],
-    'education_basic_6y': [0],
-    'education_basic_9y': [0],
-    'education_high_school': [0],
-    'education_illiterate': [0],
-    'education_professional_course': [0],
-    'education_university_degree': [0],
-    'education_unknown': [0],
-    'default_unknown': [0],
-    'default_yes': [0],
-    'housing_unknown': [0],
-    'housing_yes': [0],
-    'loan_unknown': [0],
-    'loan_yes': [0],
-    'contact_telephone': [0],
-    'month_aug': [0],
-    'month_dec': [0],
-    'month_jul': [0],
-    'month_jun': [0],
-    'month_mar': [0],
-    'month_may': [0],
-    'month_nov': [0],
-    'month_oct': [0],
-    'month_sep': [0],
-    'day_of_week_mon': [0],
-    'day_of_week_thu': [0],
-    'day_of_week_tue': [0],
-    'day_of_week_wed': [0],
-    'poutcome_nonexistent': [0],
-    'poutcome_success': [0],
-    'age': [40],
-    'duration': [258],
-    'campaign': [2.6],
-    'pdays': [962],
-    'previous': [0.17],
-    'emp_var_rate': [0.09],
-    'cons_price_idx': [93.6],
-    'cons_conf_idx': [-40.5],
-    'euribor3m': [3.6],
-    'nr_employed': [5168]
-    }
+NUMERIC_COLUMNS = [
+    'age', 'duration', 'campaign', 'pdays', 'previous', 'emp_var_rate',
+    'cons_price_idx', 'cons_conf_idx', 'euribor3m', 'nr_employed'
+    ]
+CATEGORICAL_COLUMNS = [x for x in COLUMN_ORDER if x not in NUMERIC_COLUMNS]
+COLUMN_DEFAULTS = {x: [0] for x in COLUMN_ORDER}
 DEFAULT_DATA = pd.DataFrame(COLUMN_DEFAULTS)[COLUMN_ORDER]
 
 def load_model(model='bank-deposit-classifier-test', version='1'):
@@ -85,5 +36,7 @@ def predict_with_defaults(model, categoricals=[], numerics={}):
     data = DEFAULT_DATA.copy()
     for c in categoricals:
         data[c] = 1
+    for k, v in numerics.items():
+        data[k] = v
     prediction = model.predict(data)[0]
     return prediction

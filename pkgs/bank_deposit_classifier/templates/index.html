@@ -4,6 +4,7 @@
   <form acton="/" method="POST">
     <label for="career">Choose a career:</label>
     <select name="career" id="career">
+      <option value="job_unknown">Unknown</option>
       <option value="job_blue_collar">Blue collar</option>
       <option value="job_housemaid">Housemaid</option>
       <option value="job_management">Managment</option>
@@ -14,8 +15,111 @@
       <option value="job_student">Student</option>
       <option value="job_retired">Retired</option>
       <option value="job_unemployed">Unemployed</option>
-      <option value="job_unknown">Unknown</option>
+      <option value="job_admin">Admin</option>
     </select>
+    <br>
+    <label for="career">Choose a marital status:</label>
+    <select name="marital" id="marital">
+      <option value="marital_unknown">Unknown</option>
+      <option value="marital_married">Married</option>
+      <option value="marital_single">Single</option>
+      <option value="marital_divorced">Divorced</option>
+    </select>
+    <br>
+    <label for="education">Choose an education level:</label>
+    <select name="education" id="education">
+      <option value="education_unknown">Unknown</option>
+      <option value="education_basic_4y">Basic 4 Year</option>
+      <option value="education_basic_6y">Basic 6 Year</option>
+      <option value="education_basic_9y">Bsaic 9 Year</option>
+      <option value="education_high_school">High School</option>
+      <option value="education_illiterate">Illiterate</option>
+      <option value="education_professional_course">Professional Course</option>
+      <option value="education_university_degree">University Degree</option>
+    </select>
+    <br>
+    <label for="default">Has credit in default:</label>
+    <select name="default" id="default">
+      <option value="default_unknown">Unknown</option>
+      <option value="default_yes">Yes</option>
+      <option value="default_no">No</option>
+    </select>
+    <br>
+    <label for="housing">Has a housing loan:</label>
+    <select name="housing" id="housing">
+      <option value="housing_unknown">Unknown</option>
+      <option value="housing_yes">Yes</option>
+      <option value="housing_no">No</option>
+    </select>
+    <br>
+    <label for="contact">Contact type:</label>
+    <select name="contact" id="contact">
+      <option value="contact_telephone">Telephone</option>
+      <option value="contact_cellular">Cellular</option>
+    </select>
+    <br>
+    <label for="month">Month of year:</label>
+    <select name="month" id="month">
+      <option value="month_jan">January</option>
+      <option value="month_feb">February</option>
+      <option value="month_mar">March</option>
+      <option value="month_apr">April</option>
+      <option value="month_may">May</option>
+      <option value="month_jun">June</option>
+      <option value="month_jul">July</option>
+      <option value="month_aug">August</option>
+      <option value="month_sep">September</option>
+      <option value="month_oct">October</option>
+      <option value="month_nov">November</option>
+      <option value="month_dec">December</option>
+    </select>
+    <br>
+    <label for="day">Day of week:</label>
+    <select name="day" id="day">
+      <option value="day_of_week_mon">Monday</option>
+      <option value="day_of_week_thu">Thursday</option>
+      <option value="day_of_week_tue">Tuesday</option>
+      <option value="day_of_week_wed">Wednesday</option>
+      <option value="day_of_week_fri">Friday</option>
+    </select>
+    <br>
+    <label for="poutcome">Outcome of previous marketing campaign:</label>
+    <select name="poutcome" id="poutcome">
+      <option value="poutcome_unknown">Unknown</option>
+      <option value="poutcome_yes">Yes</option>
+      <option value="poutcome_no">No</option>
+    </select>
+    <br>
+    <label for="age">Age:</label>
+    <input id="age" name="age" type="age" value="40">
+    <br>
+    <label for="duration">Last contact duration (in seconds):</label>
+    <input id="duration" name="duration" type="duration" value="250">
+    <br>
+    <label for="campaign">Number of contacts performed for this campaign for this client:</label>
+    <input id="campaign" name="campaign" type="campaign" value="3">
+    <br>
+    <label for="pdays">Time since the client was contacted for a previous campaign (in days):</label>
+    <input id="pdays" name="pdays" type="pdays" value="950">
+    <br>
+    <label for="previous">Number of contacts performed before this campaign for this client:</label>
+    <input id="previous" name="previous" type="previous" value="0">
+    <br>
+    <label for="emp_var_rate">Employment variation rate (quarterly):</label>
+    <input id="emp_var_rate" name="emp_var_rate" type="emp_var_rate" value="0.1">
+    <br>
+    <label for="cons_price_idx">Consimer price index (monthly):</label>
+    <input id="cons_price_idx" name="cons_price_idx" type="cons_price_idx" value="95">
+    <br>
+    <label for="cons_conf_idx">Consumer confidence index (monthly):</label>
+    <input id="cons_conf_idx" name="cons_conf_idx" type="cons_conf_idx" value="-40">
+    <br>
+    <label for="euribor3m">Euribor 3 month rate (daily):</label>
+    <input id="euribor3m" name="euribor3m" type="euribor3m" value="3.6">
+    <br>
+    <label for="nr_employed">Number of employees (quarterly):</label>
+    <input id="nr_employed" name="nr_employed" type="nr_employed" value="5150">
+    <br>
     <input type="submit" value="Predict">
   </form>
 {% endblock %}
