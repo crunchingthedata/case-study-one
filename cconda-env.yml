@@ -1,0 +1,5 @@
+name: case-study-one
+dependencies:
+    - python>=2.7
+    - pandas
+    - numpy   
